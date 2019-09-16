@@ -1,0 +1,31 @@
+{
+  "name": "simulador-kdpo",
+  "version": "1.0.0",
+  "description": "Simulador de portal kdpo para pibee",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://10.10.20.237:9091/root/simulador-kdpo.git"
+  },
+  "author": "mario.mendez@grupocmc.co",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "edit-json-file": "^1.2.1",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-generator": "^4.16.1",
+    "express-session": "^1.16.1",
+    "fs": "0.0.1-security",
+    "http-proxy": "^1.17.0",
+    "method-override": "^3.0.0",
+    "path": "^0.12.7",
+    "soap": "^0.27.1",
+    "sqlite3": "^4.0.9",
+    "util": "^0.12.0"
+  }
+}

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<head>
+    <title>Credenciales</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta http-equiv="Content-Language" content="es" />
+      <style>
+/*the container must be positioned relative:*/
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element:*/
+}
+
+.select-selected {
+  background-color: DodgerBlue;
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+  user-select: none;
+}
+
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: DodgerBlue;
+  top: 100%;
+  left: 0;F
+  right: 0;
+  z-index: 99;
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+</style>
+    <script src="public/js/swfobject_modified.js" type="text/javascript"></script>
+    <script type="text/javascript" src="public/js/plantilla_es.js"></script>
+    <script type="text/javascript" src="public/js/direccionPIBEE_es.js"></script>
+    <script type="text/javascript">
+     /*finciones nuavas*/
+     function update(obj){
+     var opcion=obj.target.value;
+     if(opcion == '0'){
+           document.getElementById("empresa").value = "";
+           document.getElementById("usuario").value = "";
+     }else{
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          var json = JSON.parse(this.responseText);
+           document.getElementById("empresa").value = json.referencia;
+           document.getElementById("usuario").value = json.usuario;
+         }
+       };
+       xhttp.open("GET", "/webseal/usuario/"+obj.target.value, true);
+       xhttp.send(); 
+     } 
+     }
+
+
+    var myWidth = 0, myHeight = 540;
+    function loadSize(){
+        if( typeof( window.innerWidth ) == 'number' ) {
+        //Non-IE
+        myWidth = window.innerWidth;
+        myHeight = window.innerHeight;
+        } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+        //IE 6+ in 'standards compliant mode'
+        myWidth = document.documentElement.clientWidth;
+        myHeight = document.documentElement.clientHeight;
+        } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+        //IE 4 compatible
+        myWidth = document.body.clientWidth;
+        myHeight = document.body.clientHeight;
+        }
+        var myHeight = myHeight - 112; 
+       // document.getElementById("teg").style.height=myHeight+"px";
+    }
+    //-->
+    </script>
+    <link rel="stylesheet" media="screen" href="public/css/estilos_index_es.css" type="text/css" />
+  
+    </head>
+    <body  id="home">
+    <div id="cabecera">
+      <div id="metanavegacion">
+        <ul>
+          <li class="linea"><span class="sin_negrita ">L&iacute;nea Contacto Empresarial</span><strong>3078071 |
+            018000935777</strong></li>
+          <li><a href="0_atencion.html" title="Atenci&oacute;n al cliente" target="centro" class="sin_negrita">Atenci&oacute;n al cliente</a></li>
+          <li><a href="0_ayuda.html" title="Ayuda" target="centro" class="sin_negrita">Ayuda</a></li>
+        </ul>
+      </div>
+      <!--acaba el div de metanavegacion -->
+      <div class="mwidth"> <img src="public/img/Kdpo_Logo.gif" alt="Banco BBVA" /> </div>
+      <!--acaba el div mwidth -->
+    </div>
+    <!--acaba el div cabecera -->
+    <div id="menu-lateral">
+      <div id="acceso-cliente">Acceso cliente</div>
+      <div id="contenido-lateral"><img src="public/img/imagen-lateral_es.gif" alt="Imagen cabecera" />
+       <form class="campos" name="logon"  method="POST" action="../DFAUTH/slod_mult_web/DFServlet" onSubmit="return validarFormulario();">
+         <fieldset>
+         <label for="usuarioList" id="usuarioList">Usuario<br/>
+         <select onchange="update(event)"  class="custom-select" style="width:187px; height: 28px;" >
+            <option value="0">Seleccione un usuario</option>
+             <%users.forEach(user => { %>
+                 <option value="<%= user.usuario %>"><%= user.usuario %></option>
+               <% }); %>
+           </select>
+          </label>
+          
+          
+          <input type="hidden" name="origen" value="pibee"/>
+          
+           <label for="cuit" id="cuit">Referencia<br/>
+               <input  readonly="readonly"  name="cod_emp" type="text" id="empresa" maxlength="8" tabindex="1" autocomplete="off" title="empresa" value="" style="font-size:13px;" onFocus="tvSetCampo( this, 8, 'n0' )" />
+           </label>
+           <label for="cuit" id="cuit">Cod. Usuario<br/>
+               <input readonly="readonly" name="cod_usu" type="text" id="usuario" maxlength="8" tabindex="3" autocomplete="off" title="usuario" value="" style="font-size:13px;" onFocus="tvSetCampo( this, 8, 'a1' )" />
+           </label>
+           
+           <input type="hidden" name="idioma" value=""/>
+           <input type="hidden" name="eai_user" value=""/> 
+           <input type="hidden" value="" name="eai_URLDestino"/>
+            <div class="form_final">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <th scope="col">
+                <div id="seeboton">
+                  <input name="aceptar" type="submit" class="boton" id="aceptar" tabindex="5" title="aceptar" value="aceptar"/>
+                  </div>
+                </th>
+              </tr>
+            </table>
+            </div>
+          </fieldset>
+        </form>
+        <div ><img src="public/img/img_aviso1.gif" /></div>
+        <div >
+          <object id="FlashID" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="184" height="177">
+            <param name="movie" value="banners/banner_container2.swf">
+            <param name="quality" value="high">
+            <param name="wmode" value="opaque">
+            <param name="swfversion" value="9.0.45.0">
+            
+             <!-- SGI-1358219-MAN I -->
+           <param name="internalowScriptAccess" value='sameDomain' />
+           <param name="internalowNetworking" value="internal" />
+           <!-- SGI-1358219-MAN F -->	
+            
+            <!-- This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don&rsquo;t want users to see the prompt. -->
+            <param name="expressinstall" value="js/expressInstall.swf">
+            <!-- Next object tag is for non-IE browsers. So hide it from IE using IECC. -->
+            <!--[if !IE]>-->
+            <object type="application/x-shockwave-flash" data="banners/banner_container2.swf" width="184" height="177">
+              <!--<![endif]-->
+              <param name="quality" value="high">
+              <param name="wmode" value="opaque">
+              <param name="swfversion" value="9.0.45.0">
+              <param name="expressinstall" value="js/expressInstall.swf">
+      <!-- SGI-1358219-MAN I -->
+           <param name="internalowScriptAccess" value='sameDomain' />
+           <param name="internalowNetworking" value="internal" />
+           <!-- SGI-1358219-MAN F -->	
+              <!-- The browser displays the following alternative content for users with Flash Player 6.0 and older. -->
+              <img src="public/img/banner_seguridad.gif" width="184" height="167">
+              <!--[if !IE]>-->
+            </object>
+            <!--<![endif]-->
+          </object>
+        </div>
+      </div>
+      <!--acaba el div contenido lateral -->
+    </div>
+    <!--acaba el div lateral -->
+    <div id="content-right">
+    <div id="acceso-cliente" class="home_url">&nbsp;<a href="contenido_es.html" target="centro" title="Inicio">Home </a></div>
+      <img   src="public/img/bbva-netcash.jpg" style="margin-left: 14%;" />
+    </div>
+    
+    <div class="menu_footer">
+      <div id="banco">BBVA COLOMBIA ESTABLECIMIENTO BANCARIO</div> 
+      <ul>
+        <li><a href="0_configuracion.html" title="Configuraci&oacute;n recomendada" target="centro">Configuraci&oacute;n recomendada</a></li>
+        <li><a href="5_seguridad_1.html" target="centro" title="">Seguridad</a></li>
+        <li><a href="0_aviso.html" target="centro" title="">Aviso legal</a></li>
+        <li>BBVA Colombia - 2010 </li>
+      </ul>
+    </div>
+    </body>
+    </html>
+    

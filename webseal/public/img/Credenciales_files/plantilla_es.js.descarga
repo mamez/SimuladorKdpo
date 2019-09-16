@@ -1,0 +1,233 @@
+document.write("<script type='text/javascript' src='js/keyBoard_es.js'></script>");
+
+var carLetras = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ·ÈÌÛ˙¡…ÕO⁄‡ËÏÚ˘¿»Ã“Ÿ‰ÎÔˆ¸ƒÀœ÷‹'-";
+var carNumeros = "0123456789";
+
+function init(max, form) 
+{          
+	form.check.checked = false;      
+	tvInit();
+	tvClose(false);
+}                 
+
+document.write("<script type='text/javascript' src='js/cookie.js'></script>");
+
+function fSelecIdioma() {
+	
+ 	if (document.rmcf.idioma.options[0].selected)
+ 	{
+ 		setCookie('COD_IDIOMISO','es');
+ 		parent.location.href="KDPOSolicitarCredenciales_es.html";
+ 	}
+ 	if (document.rmcf.idioma.options[1].selected)
+ 	{
+ 		setCookie('COD_IDIOMISO','en');
+ 		parent.location.href="KDPOSolicitarCredenciales_en.html";
+	}
+	
+}
+
+function abrirIdioma()
+{
+	idioma = getCookie('COD_IDIOMISO');
+
+	if (idioma == null){
+		setCookie('COD_IDIOMISO','es');
+	}
+		
+	idioma = getCookie('COD_IDIOMISO');
+	if(idioma=='es'){
+		top.frames['centro'].location.href ="idioma_es.html";
+	}else if (idioma=='en'){
+		top.frames['centro'].location.href ="idioma_en.html";
+	}
+}
+
+document.write("<script type='text/javascript' src='js/cookie.js'></script>");
+
+function validarFormulario() {
+	
+	idioma = getCookie('COD_IDIOMISO');
+
+	if (idioma == null){
+		setCookie('COD_IDIOMISO','es');
+	}
+	
+	idioma = getCookie('COD_IDIOMISO');
+	
+	var f = document.logon;
+		
+	
+	var correcto = true;	
+	if(f.cod_emp.value=="")
+	{
+		alert("Debe introducir el cÛdigo de referencia");
+		f.cod_emp.focus();		
+		correcto=false;
+	} 	
+	 
+	 else if (!valido(f.cod_emp.value, carNumeros))
+	{
+		alert("El cÛdigo de referencia sÛlo admite caracteres numÈricos.");
+		f.cod_emp.focus();		
+		correcto = false;			
+	} 
+
+	if (correcto)
+	{
+		if(f.cod_usu.value=="")
+		{
+			alert("Debe introducir el cÛdigo de usuario");
+			f.cod_usu.focus();
+			correcto=false;
+		}else if (f.cod_usu.length > 8 || f.cod_usu.length <2)
+		{
+			alert("El cÛdigo de usuario no es valido");
+			f.cod_usu.focus();
+			correcto = false;
+		} else if (!valido(f.cod_usu.value, carLetras + carNumeros))
+		{
+			alert("El cÛdigo de usuario sÛlo admite caracteres alfanumÈricos. No admite los caracteres 'Ò' o '—', ni el espacio, ni caracteres especiales");
+			f.cod_usu.focus();
+			correcto = false;			
+		} 
+	}
+
+	if (correcto){
+		// claveAcceso
+	
+		if(f.eai_password.value==""){
+			f.eai_password.focus();
+			alert("Debe introducir una clave de acceso");
+			correcto=false;
+		}
+	} 
+
+	if (correcto)
+	{
+	
+		f.cod_emp.value = f.cod_emp.value.toUpperCase();
+	 	f.cod_usu.value = f.cod_usu.value.toUpperCase();
+		f.eai_password.value = f.eai_password.value.toUpperCase();
+		f.eai_URLDestino.value = "/SCOKDPO/kdpo_mult_web/servlet/PIBEE?OPERACION=INICIO_PORTAL&LOCALE="+idioma+"_CO";
+		
+		canal = "0026";
+		bancoInt = "0082";
+		
+		f.eai_user.value = canal + bancoInt + f.cod_emp.value + f.cod_usu.value;
+		
+		f.idioma.value = traducirIdiomaSlod(idioma);
+		
+		aceptarlogin(idioma);
+		
+		return true;
+		
+	}else
+	{
+	    return false;
+	}
+ 	
+}
+
+function valido(cadena, caracteres){
+
+	var longitud = cadena.length;
+
+	var correcto = true;
+
+	i = 0;
+
+	while (i<longitud && correcto){
+
+		temp = cadena.substring(i, i+1);
+
+		if(caracteres.indexOf(temp,0)==-1 )
+
+			correcto = false;
+
+		else
+
+			i++;
+
+	}
+
+	
+
+	if (correcto)
+
+		return true;
+
+	else
+
+		return false;
+
+}
+
+
+function aceptarlogin(idioma)
+{
+	NS4 = (document.layers)?true:false;
+	DOM = (document.getElementById)?true:false;
+	IE4 = (document.all)?true:false;
+	if(idioma=="es"){
+		dinarama="(Accediendo)";
+		if (IE4)
+		{
+			capaboton=seeboton;
+			capaboton.innerHTML=dinarama;
+			setInterval(EsperePleaseEsp, 150);
+		}
+		else if (DOM)
+		{
+			capaboton = document.getElementById('seeboton');
+			capaboton.innerHTML=dinarama;
+			setInterval(EsperePleaseEsp, 150);
+		}
+	}else if (idioma=="en"){
+		dinarama="(Acceding)";
+		if (IE4)
+		{
+			capaboton=seeboton;
+			capaboton.innerHTML=dinarama;
+			setInterval(EsperePleaseIng, 150);
+		}
+		else if (DOM)
+		{
+			capaboton = document.getElementById('seeboton');
+			capaboton.innerHTML=dinarama;
+			setInterval(EsperePleaseIng, 150);
+		}
+	}
+}
+	
+function EsperePleaseEsp()
+{
+	(dinarama=="(((((Accediendo)))))")? dinarama="(Accediendo)" : dinarama="("+dinarama+")"
+		capaboton.innerHTML=dinarama;
+}
+
+function EsperePleaseIng()
+{
+	(dinarama=="(((((Acceding)))))")? dinarama="(Acceding)" : dinarama="("+dinarama+")"
+	capaboton.innerHTML=dinarama;
+}
+
+function traducirIdiomaSlod(idioma)
+{
+	if(idioma == "es")
+	{
+		return "CAS";
+	}
+	else if (idioma == "en")
+	{
+		return "ING";
+	}
+}
+
+function accesoSeguro(campo)
+{
+	if(campo.checked)
+		tvOpen();
+	else
+		tvClose();
+}

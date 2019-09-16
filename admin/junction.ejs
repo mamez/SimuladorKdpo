@@ -1,0 +1,203 @@
+<!-- Tabla -  junction -->
+<button href="" type="button" style="margin-right: 1%" class="btn btn-info btn-primary  pull-right " data-toggle="modal" data-target="#modal1">Nuevo</button>
+<div >
+      <div class="col-auto">
+            <table   class="table table-striped table-hover table-responsive " id="Tabla_junction" >
+                <thead>									
+                      <th>Id</th>
+                      <th>Nombre</th>
+                      <th>Filter</th>
+                      <th>Server</th>
+                      <th>Static_junction</th>
+                      <th>Acciones</th>
+                </thead>
+                <tbody>
+                <% junctions.forEach((u ,index)=> { %>   
+                <tr id="row1" data-toggle="modal" data-id="1" data-target="#orderModal">
+                   <td id="junction_id"><%=u.juction_id%></td>
+                   <td id="name"><%=u.name%></td>
+                   <td id="filter"><%=u.filter%></td>
+                   <td id="server"><%=u.server%></td>
+                   <td id="static_junction"><%=u.static_junction%></td>
+                   <td id="b1" style="width: 100px" >
+                      <span value="Put"  class="btn btn-primary"  onclick="UpdateUserDetails('<%=u.juction_id%>','<%=u.name%>','<%=u.filter%>','<%=u.server%>','<%=u.static_junction%>')" ><i class="fa fa-edit" aria-hidden="true"></i></span>
+                      <span value="Delete" class="btn btn-primary"   onclick="openModal('<%=u.juction_id%>')"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+                       
+                   </td>
+                </tr>
+                </tbody>
+            <% });%>
+        </table>
+    </div>
+ </div>
+ 
+<!-- Modal - Registro de Junction -->
+ 
+
+
+<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      <h4 class="modal-title" id="myModalLabel"> <b> Crear Jqunction </b> </h4>
+      </div>
+      <!--Body-->
+      <div class="modal-body">
+            <form method="post" action="">
+			<div class="row">
+			  <div class="col-sm-12">
+				<div class="form-group">
+				  <label for="name">Name</label>
+				  <input type="text" class="form-control" name="name" id="name" required="required" />
+				</div>  
+			  </div>
+			  <div class="col-sm-12">
+				<div class="form-group">
+				  <label for="filter" >Filter</label>              
+				   <input type="text" class="form-control" name="filter" id="filter" required="required"/>
+				</div> 
+			  </div>         
+			
+       <div class="col-sm-12">
+				<div class="form-group">
+				  <label for="static_junction">Static_junction</label>              
+				   <input type="text" class="form-control" name="static_junction" id="static_junction" required="required"/>
+				</div> 
+			  </div> 
+			
+			  <div class="col-sm-12">
+				<div class="form-group">
+				  <label for="server">Server</label>              
+				   <input type="text" class="form-control" name="server" id="server" required="required"/>
+				</div> 
+			  </div>     
+			</div>
+           <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+          <button class="btn btn-primary pull-right " type="submit">Guardar</button>
+		  </form> 
+        </div>
+      <!--Footer-->
+       
+    </div>
+  </div>
+</div>
+            
+ 
+ <!-- Modal - Editar de junction -->
+
+
+    <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel"> <b> Editar Junction </b> </h4>
+
+      </div>
+      <!--Body-->
+      <div class="modal-body">
+            <form method="post" action="" id="formEdit">
+			<div class="row">
+			  <div class="col-sm-12">
+				<div class="form-group">
+				  <label for="name">Name</label>
+				  <input type="text" class="form-control" name="name" id="edit_name" required="required"/>
+				</div>  
+			  </div>
+			  
+			  <div class="col-sm-12">
+				<div class="form-group">
+				  <label for="filter" >Filter</label>              
+				   <input type="text" class="form-control" name="filter" id="edit_filter" required="required"/>
+				</div> 
+			  </div>         
+			
+        <div class="col-sm-12">
+				<div class="form-group">
+				  <label for="static_junction">Static_junction</label>              
+				   <input type="text" class="form-control" name="static_junction" id="edit_static" required="required"/>
+				</div> 
+			  </div>
+		
+			  <div class="col-sm-12">
+				<div class="form-group">
+				  <label for="server">Server</label>              
+				   <input type="text" class="form-control" name="server" id="edit_server" required="required"/>
+				</div> 
+			  </div>     
+			</div>
+           <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+          <button class="btn btn-primary pull-right" type="submit">Guardar</button>
+		  </form> 
+        </div>
+      <!--Footer-->
+       
+    </div>
+  </div>
+</div>
+ 
+ <!-- Modal - Eliminar de Usuarios -->
+       <div class="modal fade" id="modal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                   <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title"> <b> Eliminar Junction </b> </h4>
+                   </div>
+                   <div class="modal-body">
+                       <form  method="post" action="" id="formDelate"  >
+                        <div class="row">
+                           <div class="col-sm-9">
+                              <div class="form-group">
+                                <label for="Junction">Esta seguro que desa eliminar la junction</label> 
+                              </div>
+                           </div>
+                         </div>
+                      <div class="modal-footer">
+                       <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">NO</button>
+                       <button type="submit" class="btn btn-primary pull-right" id="eliminar" onclick="#">SI</button>
+                        </div>
+                     </form>
+                   </div>
+                </div>
+             </div>
+          </div>
+
+
+      
+
+
+         
+ 
+<!-- Script - funcionalidad -->
+<script>
+jQuery.noConflict(); 
+function openModal(id){
+$('#modal3').modal('show');
+var action="/admin/junction/"+id+"?_method=DELETE"
+    $('#formDelate').attr('action', action);
+};
+</script>
+
+
+
+<script>
+  function UpdateUserDetails(id,na,fil,ser,stat) {
+   $("#edit_name").val(na);
+   $("#edit_filter").val(fil);
+   $("#edit_server").val(ser);
+   $("#edit_static").val(stat);
+   $('#modal2').modal('show');
+   var action="/admin/junction/"+id+"?_method=PUT"
+   $('#formEdit').attr('action', action);
+};
+</script>

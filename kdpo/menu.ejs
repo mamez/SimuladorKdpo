@@ -1,0 +1,586 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0060)# -->
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!----><meta http-equiv="X-Frame-Options" content="ALLOW-FROM">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=10;IE=9;IE=8">
+    <meta http-equiv="cache-control" content="max-age=0">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="shortcut icon" type="image/x-icon" href="/kdpo/public/images/favicon.ico">
+    <title>BBVA net cash</title>
+
+    <link rel="stylesheet" href="/kdpo/public/css/kyop-all.css?vkyop=v1.0.11">
+    <!--[if IE 7]>
+<link rel="stylesheet" href="resources/css/pnm_styles_ie7.css?vkyop=v1.0.11">
+<![endif]-->
+    <script>
+      function executeLink(info) {
+          var config=info.split(';');
+          document.forms['redirect']['pb_cod_produc'].value = config[0];
+          document.forms['redirect']['pb_cod_serv'].value = config[1];
+          document.forms['redirect']['pb_cod_proc'].value =config[2];
+          document.forms['redirect']['pb_url'].value = config[3];
+          document.forms['redirect'].action=config[4];
+          document.getElementById("redirect").submit();
+           iframeLoaded();
+      }
+      function iframeIsLoaded(){
+         
+          var myiframe = document.getElementById('kyop-central-load-area');
+           //alert(myiframe);
+    myiframe.onreadystatechange = function() {
+        // alert(myiframe.readyState);
+        //if (myiframe.readyState == 'complete') {
+          //  iframeIsLoaded();
+      //  }
+    }
+      }
+     function  iframeLoaded(){
+         //  alert(1);
+      }
+     function  iframeReady(){
+       //   alert(3);
+      }
+
+      function desconectar(){
+          
+      }
+    </script>
+    <script async="" src="#"></script>
+    <script src="/kdpo/public/js/jquery-all.js?vkyop=v1.0.11" type="text/javascript">
+        ;
+    </script>
+    <script src="/kdpo/public/js/kyop-all.js?vkyop=v1.0.11" type="text/javascript"></script>
+    <style>
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+</head>
+
+<body class="kyop-body" onbeforeunload="javascript:endSession();" ooncontextmenu="return false">
+
+    <div id="kyop-contentholder" style="top: 50%; z-index: 20001; font-family: Arial; font-weight: normal; font-size: 11px; color: rgb(153, 153, 153); text-align: center; position: absolute; left: 50%; width: 200px; margin-left: -100px; margin-top: -60px; display: none;">
+        <div>
+            <img src="/kdpo/public/common/loadingBbva.gif" height="20px" width="20px" style="margin-right:8px;" align="absmiddle"> <span id="divTitle" class="doTranslate" style="vertical-align: middle;" key="kyop.ntcsh.i.div.title">BBVA net-Cash</span>
+        </div>
+        <div style="padding: 10px;margin: 0;height: auto;display: none">
+            <span id="divSubtitle" class="doTranslate" key="kyop.ntcsh.i.msg.loading">Iniciando</span>BBVA net cash
+        </div>
+    </div>
+
+    <!-- Contenedor del pop up de desconexion -->
+    <div id="kyop-timeoutcontainer" class="kyop-messagebox-container-div" style="display:none">
+        <div id="ventanaFinSesion">
+            <div class="ventanaModal desconexion" style="display: block;">
+                <h1 class="azul">Aviso de desconexión automática</h1>
+                <div id="kyop-timeoutcontainer-text" class="marginBottom20">
+                    <p>Se ha superado el tiempo de inactividad que permite BBVA net cash. Si persiste esta situación, como medida de seguridad, la sesión será desactivada.</p>
+                </div>
+                <div class="clearAll" id=""></div>
+                <div class="centrado">
+                    <h2>Tiempo restante para la desconexión</h2></div>
+                <div class="centrado">
+                    <div class="interior">
+                        <div class="centrado bordeDesconexion ancho150" style="margin:auto">
+                            <p class="numero" id="timerVentanaFinSesion">15</p>
+                            <p class="letra">segundos</p>
+                        </div>
+                        <div class="marginTop5"> <img id="kyop-img-desconexion" alt="" asrc="/kdpo/public/images/desconexion.png"></div>
+                    </div>
+                </div>
+                <div class="clearAll" id=""></div>
+                <div id="botonesVentanaFinDesconexion" class="marginTop20">
+                    <div class="dobleColumnaIzquierda dobleColumnaBoton">
+                        <div class="interior">
+                            <button class="grandote right" id="continuarVentanaFinSesion" onclick="com.bbva.kyop.util.SessionUtil.continueSession();" type="button" value="">Mantener sesión activa<img alt="" class="botonDesconectar" src="/kdpo/public/images/img_trans_1x1.gif"></button>
+                        </div>
+                    </div>
+                    <div class="dobleColumnaDerecha dobleColumnaBoton">
+                        <div class="interior">
+                            <button class="grandote bgRojo left" id="cerrarVentanaFinSesion" onclick="com.bbva.kyop.util.SessionUtil.endSessionsPopUp()" type="button" value=""> Desconectar ahora<img alt="" class="botonDesconectar" src="/kdpo/public/images/img_trans_1x1.gif"></button>
+                        </div>
+                    </div>
+                    <div class="clearAll"></div>
+                </div>
+                <div id="cargandoFinDesconexion" class="marginTop20" style="display:none">
+                    <div class="centrado  marginBottom10"><img alt="imagen de desconexión" src="/kdpo/public/common/loadingBbva.gif"></div>
+                    <div class="centrado" style="font-size:14px"> Desconectar ahora</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PORTAL -->
+    <div id="kyop-container-body" style="">
+
+        <div class="cabecera-clean" id="kyop-header">
+            <div class="clearAll"></div>
+            <div id="kyop-header-wrapper">
+                <div id="kyop-header-logo-container" class="logoCabecera">
+
+                    <div onclick="com.bbva.kyop.controller.ReverseCallerController.reverseCallerByMenuInfo(&#39;OPCION_RELACIONADA&#39;, &#39;es_ES#03#home&#39;, &#39;S&#39;, &#39;S&#39;)" class="kyop-pointer"> <img class="left barraDegradadaCabecera " src="/kdpo/public/images/img_trans_1x1.gif"> <img class="logo" src="/kdpo/public/images/logo_bbva_net_cash_nb.png" title="Sin traducción"></div>
+                </div>
+                <div class="menuCabecera">
+                    <div id="kyop-first-header-container" class="dropDown submenuUp">
+                        <ul class="contenedorDrop">
+                            <li class="sinIcono">
+
+                            </li>
+                            <li class="sinIcono">
+
+                                <div class="menuDrop">
+                                    <div class="elementoMenu" id="divCabSuperior">
+
+                                        <div class="desconectar" style="display: none;">
+                                            <button class="corto azul doTranslate" type="button" value="Desconectar" key="kyop.ntcsh.i.button.disconnect" onclick="com.bbva.kyop.util.SessionUtil.endWebsealSession();" title="Desconectar">
+                                                Popup
+                                            </button>
+                                            <button class="corto azul doTranslate" type="button" value="Desconectar" key="kyop.ntcsh.i.button.disconnect" onclick="com.bbva.kyop.controller.CoreController.testPopup();" title="Desconectar">
+                                                Popup
+                                            </button>
+                                            <button class="corto azul doTranslate" type="button" value="Desconectar" key="kyop.ntcsh.i.button.disconnect" onclick="com.bbva.kyop.controller.CoreController.redirectParent();" title="Desconectar">
+                                                Parent
+                                            </button>
+                                            <button class="corto azul doTranslate" type="button" value="Desconectar" key="kyop.ntcsh.i.button.disconnect" onclick="com.bbva.kyop.controller.CoreController.testWhat();" title="Desconectar">
+                                                what
+                                            </button>
+                                            <button class="corto azul doTranslate" type="button" style="display: none;" value="Desconectar" key="kyop.ntcsh.i.button.disconnect" onclick="com.bbva.kyop.util.MessageBoxUtil.testMessageBoxAlert();" title="Desconectar">
+                                                Alert
+                                            </button>
+                                        </div>
+                                        <div class="desconectar" style="display: none;">
+                                            <button class="corto bgRojo doTranslate" type="button" value="Desconectar" key="kyop.ntcsh.i.button.disconnect" onclick="com.bbva.kyop.util.MessageBoxUtil.testMessageBoxError();" title="Desconectar">
+                                                Error
+                                            </button>
+                                        </div>
+                                        <div class="desconectar" style="display: none;">
+                                            <button class="corto verde doTranslate" type="button" value="Desconectar" key="kyop.ntcsh.i.button.disconnect" onclick="com.bbva.kyop.util.MessageBoxUtil.testMessageBoxConfirm();" title="Desconectar">
+                                                Confirm
+                                            </button>
+                                        </div>
+
+                                        <div id="kyop-tooltip-countryjump-container" class="kyop-active-header-buttons-container">
+
+                                            <div class="mensaje" style="position:relative;">
+                                                <div class="kyop-control-click kyop-control-click-empty">
+                                                    <div id="kyop-countryjump-select" class="kyop-countryjump-select-down">
+                                                        <p> <span class="darker">Colombia</span> </p>
+                                                    </div>
+                                                </div>
+                                                <div class="kyop-tootip-countryjump tooltipElemento" id="kyop-header-second-tooltip-countryjump" style="display: none;position:absolute;">
+                                                    <table class="datosSimples" id="kyop-countryjump-table">
+                                                        <tbody> </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div id="kyop-active-header-buttons-container" class="kyop-active-header-buttons-container kyop-control-click-empty">
+
+                                        </div>
+
+                                        <div id="kyop-user-info-container" class="kyop-nombre kyop-control-click">
+                                            <div style="position:relative;" class="kyop-pointer ">
+                                                <div onclick="com.bbva.kyop.controller.MenuController.controlHeaderButton(&#39;kyop-header-tooltip-user-info&#39;)"> <span class="kyop-long-name azul">Hola PRUEBAS QA</span>
+                                                    <p id="kyop-reference-code"> Ref. 00100337 </p> <img id="" class="bullet03" src="/kdpo/public/images/img_trans_1x1.gif" style="position: absolute;top: 5px;right: 2px;"> </div>
+                                                <div class="fondoDiferenciado kyop-tootip-background tooltip kyop-header-tooltip kyop-header-tooltip-ie7" id="kyop-header-tooltip-user-info" style="display: none;position:absolute;">
+                                                    <div class="kyop-close-tooltip"> <img src="/kdpo/public/images/img_trans_1x1.gif" class="cerrar_desplegable" alt="Cerrar" onclick="com.bbva.kyop.controller.MenuController.closeTooltip(&#39;kyop-header-tooltip-user-info&#39;)"> </div>
+                                                    <div>
+                                                        <ul class="kyop-header-button-menu-list">
+                                                            <li class="kyop-header-first-menu-list-title darker"> <span>Configuración personal</span> </li>
+                                                            <li class="kyop-header-first-menu-list azul" onclick="com.bbva.kyop.controller.MenuController.launchProcessFromHeaderButton(&#39;PR00000003&#39;, true)"> <span>Edite su perfil </span> </li>
+                                                            <li class="kyop-header-first-menu-list azul" onclick="com.bbva.kyop.controller.MenuController.launchProcessFromHeaderButton(&#39;PR00000004&#39;, true)"> <span>Personalización de cuentas </span> </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="clearAll" id="kyop-header-first-clearAll-user-info"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="fondoDiferenciado kyop-tootip-background tooltip nombre" id="ttipNombreUser" style="display: none;">
+                                            <p class="doTranslate" key="kyop.ntcsh.i.msg.welcome">Bienvenida el nuevo portal de </p>
+                                            <p class="doTranslate" key="kyop.ntcsh.i.div.title">BBVA net-Cash</p>
+
+                                            <div class="clearAll"></div>
+                                        </div>
+
+                                        <div id="kyop-header-first-menu-container" class="kyop-header-first-menu-container kyop-control-click">
+
+                                            <div class="kyop-header-button-dinamico" style="position:relative;">
+                                                <button class="azul" id="kyop-header-button-3629" type="button" value="Descarga de Conversores" onclick="com.bbva.kyop.controller.MenuController.controlHeaderButton(&#39;kyop-header-tooltip-3629&#39;)"> <span class="kyop-buttontext kyop-pointer">Descarga de Conversores</span></button>
+                                                <div class="fondoDiferenciado kyop-tootip-background tooltip kyop-header-tooltip kyop-header-tooltip-ie7" id="kyop-header-tooltip-3629" style="display: none;position:absolute;">
+                                                    <div class="kyop-close-tooltip"> <img class="cerrar_desplegable" src="/kdpo/public/images/img_trans_1x1.gif" alt="Cerrar" onclick="com.bbva.kyop.controller.MenuController.closeTooltip(&#39;kyop-header-tooltip-3629&#39;)"> </div>
+                                                    <div>
+                                                        <ul class="kyop-header-button-menu-list">
+                                                            <li class="kyop-header-first-menu-list kyop-terminal azul" onclick="com.bbva.kyop.controller.MenuController.launchProcessFromHeaderButton(&#39;3630&#39;, true)"> <span class="kyop-pointer">Transformación Bancaria</span> </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="clearAll" id="kyop-header-first-clearAll-3629"></div>
+                                                </div>
+                                            </div>
+                                           
+                                           
+                                        </div>
+
+                                        <div class="desconectar">
+                                            <button class="corto bgRojo doTranslate" id="botonDesconectar" type="button" value="Desconectar" key="kyop.ntcsh.i.button.disconnect" title="Desconectar">
+                                                <img id="kyop-disconnect-button-img" alt="Desconectar" class="doTranslate botonDesconectar" key="kyop.ntcsh.i.button.disconnect" asrc="/kdpo/public/images/img_trans_1x1.gif" title="Desconectar" src="/kdpo/public/images/img_trans_1x1.gif">
+                                            </button>
+                                        </div>
+                                        <div class="clearAll"></div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="clearAll"></div>
+                    </div>
+                    <div class="clearAll"></div>
+                    <div id="kyop-header-second-menu-container" class="submenuDown">
+
+                        <ul>
+                            <li id="kyop-favorite-button" class="kyop-pointer kyop-control-click" style="">
+                                <div onclick="com.bbva.kyop.controller.MenuController.controlSecondHeaderButtonAndRemoveActiveLanguageNode(&#39;kyop-header-second-tooltip-favorites-container&#39;,&#39;kyop-header-arrow-up-favorite&#39;,&#39;kyop-header-arrow-down-favorite&#39;)"> <span class="pointer">Favoritos</span>&nbsp; <img id="kyop-header-arrow-down-favorite" class="bullet03" src="/kdpo/public/images/img_trans_1x1.gif" style="display: inline;"> <img id="kyop-header-arrow-up-favorite" class="bullet03a" src="/kdpo/public/images/img_trans_1x1.gif" style="display: none;"> </div>
+                                <div class="desplegable" id="kyop-header-second-tooltip-favorites-container" style="display: none;position:absolute;">
+                                    <div class="contenido favoritos">
+                                        <div class="fondoContenido kyop-tooltip-max-favorites">
+                                            <table class="datosSimples" id="kyop-favorites-table">
+                                                <tbody>
+                                                    <tr class="kyop-favorite-empty">
+                                                        <td headers="col1"> <span class="azul" id="kyop-favorite-empty">No hay favoritos</span> </td>
+                                                    </tr>
+                                                    <tr onclick="com.bbva.kyop.controller.FavoriteController.administrateFavorites()">
+                                                        <td class="pieTabla darker" headers=""> <a id="kyop-admin-favorites" class="pointer">Administración de favoritos</a> </td>
+                                                        <td class="pieTabla rightContent" headers="col3"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li> <span id="kyop-telephone-405" class="kyop-pointer kyop-control-click" onclick="com.bbva.kyop.controller.MenuController.openContactLink()">91 224 98 02 / 902 33 53 73</span> <img src="/kdpo/public/images/telefono.png" class="kyop-img-telephone"> </li>
+                            <li id="kyop-languages-button" class="kyop-pointer kyop-control-click border-right-none">
+                                <div onclick="com.bbva.kyop.controller.MenuController.controlSecondHeaderButtonAndSetActiveMenuLanguages(&#39;kyop-header-second-tooltip-languages-container&#39;,&#39;kyop-header-arrow-up-language&#39;,&#39;kyop-header-arrow-down-language&#39;)"> <span id="kyop-current-language" class="pinter">Español</span>&nbsp; <img id="kyop-header-arrow-down-language" class="bullet03" src="/kdpo/public/images/img_trans_1x1.gif" style="display: inline;"> <img id="kyop-header-arrow-up-language" class="bullet03a" src="/kdpo/public/images/img_trans_1x1.gif" style="display: none;"> </div>
+                                <div class="desplegable" id="kyop-header-second-tooltip-languages-container" style="display: none;position:absolute;">
+                                    <div class="contenido kyop-language">
+                                        <div class="fondoContenido">
+                                            <table class="datosSimples kyop-language-table" id="kyop-language-table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td headers="col1" onclick="com.bbva.kyop.controller.LanguageController.changeLanguage(&#39;en&#39;)"> <a href="#" id="kyop-language-0">Inglés</a> </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <div class="clearAll" id="kyop-header-second-clearAll"></div>
+                        </ul>
+                    </div>
+                </div>
+                <div class="rwd-options" onclick="com.bbva.kyop.controller.MenuRwdController.showOrHiddeMenuRwd();">
+                    <div class="rwd-options-wrapper">
+                        <span id="kyop-integration-number-rwd">0</span>
+                        <img alt="Kyop menu bar" src="/kdpo/public/images/rwd_ico_menu.png">
+                    </div>
+                </div>
+                <div class="clearAll"></div>
+            </div>
+            <div class="migas">
+                <div class="kyop-migas-wrapper">
+                    <div class="left">
+                        <div class="casita">
+                            <img id="kyop-home-img" class="casitaGris" asrc="/kdpo/public/images/img_trans_1x1.gif" src="/kdpo/public/images/img_trans_1x1.gif">
+                        </div>
+                        <div id="migas-wrapper" class="left">
+                            <div class="miga">
+                                <p>
+                                    <label class="doTranslate" key="kyop.ntcsh.i.navigation.youarein">Usted está en</label>:</p>
+                            </div>
+                            <div id="kyop-breadcrumb-container">
+                                <div class="miga"> <a href="#" onclick="com.bbva.kyop.controller.MenuController.selectMenuOption(&#39;kyop-li-menuOption-home&#39;,&#39;kyop-div-children-container-home&#39;,false,&#39;home&#39;, true);">Portada</a> </div>
+                                <div class="clearAll"></div>
+                            </div>
+                            <!-- Esto se puede comentar -->
+                            <div class="enlaceFavoritos right" style="display:none;">
+                                <label class="doTranslate" key="kyop.ntcsh.i.fav.add">Añadir a favoritos</label>
+                            </div>
+                            <div class="desenlaceFavoritos right" style="display:none;">
+                                <label class="doTranslate" key="kyop.ntcsh.i.fav.remove">Eliminar de favoritos</label>
+                            </div>
+                            <!-- Esto se puede comentar -->
+                            <div class="clearAll"></div>
+                        </div>
+                        <div class="clearAll"></div>
+                    </div>
+                    <div id="kyop-breadcrumbs-options" class="right kyop-breadcrumbs-options">
+                        <div class="hand right link" id="kyop-link-process-help" style="display: none;" idprocess="" idservice="" onclick="com.bbva.kyop.controller.ProcessHelpController.showProcessHelp()">
+                            <div>Activar ayuda</div>
+                            <div class="help last-child"></div>
+                        </div>
+                        <div class="hand right link" id="kyop-add-favorites" style="display: none;" idprocess="" idservice="" idmenu="" onclick="com.bbva.kyop.controller.FavoriteController.addProcessToFavorite()">
+                            <div>Añadir a favoritos</div>
+                            <div class="icon_Favorito_ON last-child"></div>
+                        </div>
+                        <div class="hand right link" id="kyop-delete-favorites" style="display: none;" idprocess="" idservice="" idmenu="" onclick="com.bbva.kyop.controller.FavoriteController.deleteProcessFromFavorite()">
+                            <div>Eliminar de favoritos</div>
+                            <div class="icon_Favorito_OFF last-child"></div>
+                        </div>
+                    </div>
+                    <div class="clearAll"></div>
+                </div>
+                <img class="rwd-stripe-horizontal" alt="Stripe horizontal bbva" src="/kdpo/public/rwd_stripe_horizontal.png">
+            </div>
+        </div>
+        <!-- ÁREA CENTRAL -->
+        <div id="kyop-body" class="kyop-slice-middle-clean" style="margin-top: 138px;">
+
+            <div id="kyop-menu-rwd" style="">
+
+                <!--  desde aqui modificado	 -->
+
+                <div class="" style="width:100%; background-color: #f6f6f6; height:85px !important;padding:0px;">
+
+                    <div style=" width:55%;" class="left">
+                        <div class="left marginLeft10" style="margin-top:15px; width:50px;  height: 50px; overflow:hidden; background-color: white; border: 3px solid #e8e8e8; border-radius:50%; ">
+                            <img id="imgPerfil" style="width: 100%; height: 100%;" src="images/perfilVacio.jpg?1557336259633">
+                        </div>
+
+                        <div class="left marginLeft10" style=" margin-top:30px;  width: 50%; ">
+
+                            <div id="nombreUsuarioResp" class="left " style=" "><span class="darker"> PRUEBAS </span></div>
+                            <div class="clearAll"></div>
+                            <div class="" id="ApellidosUsuarioResp"><span style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; display: block; " class="darker"> QA </span></div>
+                            <div class="clearAll"></div>
+                            <div id="nombreDeReferenResp" class="left" style=" "><span> Ref. </span></div>
+                            <div id="referenciaUsuarioResp" class="left" style=""><span> 00100337 </span></div>
+                        </div>
+
+                    </div>
+
+                    <div style="width:45%;" class="left">
+
+                        <div class="left marginTop20 marginLeft10">
+                            <img style="" src="/kdpo/public/Img_Separador_horizontal.png">
+                        </div>
+
+                        <div class="right marginTop5 marginRight10 marginBottom5 " style="margin-left:68%; overflow:hidden; background-color: #00a9e8; border: 3px solid #00a9e8; border-radius:100%; ">
+                            <img id="ImagenDesplegableResp" style="" src="/kdpo/public/editRWD.png" onclick="myFunction()">
+                        </div>
+
+                        <div class="left marginLeft10">
+                            <div>
+                                <div id="textoUsuPais" style="display:inline"><span class="darker"> País </span></div>
+                                <span class="darker">:</span>
+                                <div id="paisResp" style="display:inline"><span> Colombia </span></div>
+                            </div>
+                            <div>
+                                <div id="textoUsuIdioma" style="display:inline"><span class="darker"> Idioma </span></div>
+                                <span class="darker">:</span>
+                                <div id="idiomaResp" style="display:inline"><span> Español </span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div style=" width: 100%;">
+                    <img id="ImagenLineaResp" style="width: 100%;" src="/kdpo/public/borde_inferior.png">
+                </div>
+                <div id="bloquePaisIdiomaResp" style="display:none; background-color: #f6f6f6;">
+                    <div class="dobleColumnaIzquierda marginTop20">
+                        <div class="left marginLeft10">
+                            <img id="ImagenMundoResp" src="/kdpo/public/globalRWD.png">
+                        </div>
+
+                        <div class="left marginLeft10">
+                            <ul>
+                                <li id="textoPais" class="darker">País seleccionado</li>
+                                <li id="paisSeleccionado">Colombia</li>
+
+                            </ul>
+                            <ul id="listadoPais" class="marginTop10">
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="dobleColumnaDerecha marginTop20">
+                        <div class="left marginLeft10">
+                            <img id="ImagenBanderaResp" src="/kdpo/public/banderaPaisRWD.png">
+                        </div>
+                        <div class="marginLeft10 left">
+                            <ul>
+                                <li id="textoIdioma" class="darker">Idioma seleccionado</li>
+                                <li id="idiomaSeleccionado">Español</li>
+                            </ul>
+                            <ul id="listadoIdiomas" class="marginTop10">
+
+                                <li class="marginBottom10" onclick="com.bbva.kyop.controller.LanguageController.changeLanguage(&quot;en&quot;)"><a id="kyop-language-rwd-0">Ingles</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="clearAll marginBottom20"></div>
+                </div>
+
+            </div>
+            <table id="kyop-boby-table" class="kyop-boby-table" width="100%">
+                <tbody>
+                    <tr>
+                        <td id="columnaMenu" class="columnaMenuVisible">
+                            <!-- MENÚ VERTICAL, CONTENEDOR -->
+                            <div class="menu-clean kyop-slice-middle-left-clean" id="kyop-menu">
+	<ul class="menuLateral" id="kyop-menuLateral">
+      <li>
+        <div class="" id="kyop-div-children-container-home" style="display: block;"></div>
+      </li>
+      <!--Menu dinamico ejs-->
+         <%menu.forEach((op ,index)=> { %>
+            <li id="kyop-li-menuOption-334<%=index%>-menuLeft" class="hiddenInRwd">
+                <a id="kyop-menuOption-334<%=index%>-menuLeft" onclick="com.bbva.kyop.controller.MenuController.selectMenuOption(&#39;kyop-li-menuOption-334<%=index%>&#39;,&#39;kyop-div-children-container-334<%=index%>&#39;,false,&#39;3345&#39;, true)" cc_eventclick_interactivo="true">
+			     <%= op.opcion  %>                                       
+	            </a>
+			   <div id="kyop-menuOption-flechaAbajoMenuAzul-334<%=index%>-menuLeft" class="flechaAbajoMenuAzul imagenFlechaMenu" onclick="$(&#39;#kyop-menuOption-3345-menuLeft&#39;).click()" style="cursor:pointer;position: absolute;top: 14px;right: 12px;"></div>
+            </li>
+            <div class="opcionesMenu" id="kyop-div-children-container-334<%=index%>-menuLeft" style="display: none;">
+            <%op.funcionalidad.forEach(item =>{
+                 var evento=item.pb_cod_produc+";"+item.pb_cod_serv+";"+item.pb_cod_proc+";"+item.pb_url+";"+item.action;
+                %>
+              <ul>
+                <li class="hiddenInRwd">
+                <a href="#"  onclick="executeLink('<%=evento%>')"><%=item.opcion_name%> 
+			    </a> 
+                </li>
+                  </ul>
+                 
+        <%});%>
+        </div>
+        <% }); %>
+      <!--Fin Menu dinamico ejs-->
+    </ul>           
+    <div class="bbvaCCBannerMenu"></div>
+</div>
+                            <div class="clearAll"></div>
+                        </td>
+                        <td id="kyop-body-table-td">
+                            <div class="kyop-slice-middle-right-clean">
+
+                                <!-- CONTENEDOR DE PRUEBAS KYOP -->
+
+                                <!-- FIN CONTENEDOR MENÚS 3 Y 4 NIVEL -->
+
+                                <!-- CONTENEDOR DE PROCESOS TIPO INTEGRACIÓN FUERTE -->
+                                <div id="kyop-central-strong-process-area" class="kyop-central-home" style="display: none;"></div>
+                                <!-- FIN CONTENEDOR DE PROCESOS TIPO INTEGRACIÓN FUERTE -->
+
+                            </div>
+
+                            <!-- FIN FAVORITOS ADMIN-->
+
+                            <!-- IFRAME -->
+                            <div style="display: none;">
+                            
+                             <form name="redirect" id="redirect" target="kyop-central-load-area" action="" method="post">
+                               <input type="hidden" name="pb_url" value="" >
+                               <input type="hidden" name="pb_cod_produc" value="">
+                               <input type="hidden" name="pb_cod_serv" value="">
+                               <input type="hidden" name="pb_cod_proc" value="">
+                               <input type="hidden" name="LOCALE" value="es_CO">
+                               <input type="hidden" name="pb_cod_ffecha" value=" dd/MM/yyyy">
+                               <input type="hidden" name="pb_cod_fimporte" value="0,00.0">
+                               <input type="hidden" name="PB.segmento" value="0000">
+                               <input type="hidden" name="xtiTipoProd" value="C">
+                               <input type="hidden" name="pb_xiti_comprper" value="N">
+                               <input type="hidden" name="pb_husohora" value="(GMT-06:00)">
+                            </div>
+                            <div id="kyop-central-load-area-container" style="height: 100%;">
+                                   
+                                <iframe src=""  id="kyop-central-load-area" name="kyop-central-load-area"  scrolling="yes"   onload="iframeIsLoaded();com.bbva.kyop.controller.CoreController.iFrameOnLoad(this);window.scrollTo(0,0);" style="display: none; position: relative; height: 736px; width: 100%;" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" src="" vspace="0" title="Invocacion de Posición Global"></iframe>
+                               <!--<div class="loader"></div>--> 
+                            </div>
+                            <!-- FIN IFRAME -->
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <div class="clearAll"></div>
+        <div id="ventanaCapaEspera" style="display: none;">
+            <div class="modal">
+                <div class="ventanaMensaje" id="ventanaCapaEsperaMensajeOriginalTr">
+                    <div class="ventanaMensajeInterior">
+                        <div class="ventanaMensajeInteriorWrapper">
+                            <img alt="Procesando su petición," class="marginTop31 doTranslate kyop-waiting-img" key="kyop.ntcsh.i.msg.inProgress1_2" asrc="/kdpo/public/images/common/loadingBbva.gif" title="Procesando su petición," src="/kdpo/public/common/loadingBbva.gif">
+
+                            <div class="mensajesModal cargador" style="">
+                                <h2><label class="doTranslate" key="kyop.ntcsh.i.msg.inProgress1_2">Procesando su petición,</label>
+                            <label class="doTranslate" key="kyop.ntcsh.i.msg.inProgress2_2"> por favor espere</label>...</h2>
+                            </div>
+                            <div class="clearAll"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ventanaMensaje" id="ventanaCapaEsperaMensajeTr" style="display: none;">
+                    <div class="ventanaMensajeInterior">
+                        <img alt="Procesando su petición," class="marginTop31 marginLeft50 left doTranslate kyop-waiting-img" key="kyop.ntcsh.i.msg.inProgress1_2" asrc="/kdpo/public/images/common/loadingBbva.gif" title="Procesando su petición," src="/kdpo/public/common/loadingBbva.gif">
+
+                        <div class="mensajesModal cargador">
+                            <h2 id="ventanaCapaEsperaMensaje">MSG..</h2>
+                        </div>
+                        <div class="clearAll"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearAll"></div>
+
+        <!-- Contenedor para mostrar el menú del pie -->
+        <div class="kyop-footer-info-container-wrapper">
+            <div class="pie" id="kyop-footer-info-container">
+                <div id="kyop-footer-menu-container" class="right"><span>                 <a href="#" id="kyop-footer-link-0" onclick="com.bbva.kyop.util.LightBoxUtil.loadLightBoxKyop(                 &#39;kyop-lightbox-container-div&#39;, &#39;kyop-lightbox-iframe-div&#39;, &#39;kyop-lightbox-form&#39;,                     {                         url: &#39;/local_pibee/TARIFARIO_BBVA_2017_actualizado_diciembre_27_tcm1304-629824.pdf&#39;,                         height: 600,                         width: 600,                         innerWidth: 600,                         innerHeight: 600,                         registerActivity: true,       method: &#39;GET&#39;,                         title: &#39;Tarifas y otros avisos:&#39;                     });">Tarifas y otros avisos:</a>             </span> <img alt="" class="imgSeparador" src="/kdpo/public/images/img_trans_1x1.gif"> <span>                 <a href="#" id="kyop-footer-link-1" onclick="                  com.bbva.kyop.util.LightBoxUtil.loadLightBoxKyop(                 &#39;kyop-lightbox-container-div&#39;, &#39;kyop-lightbox-iframe-div&#39;, &#39;kyop-lightbox-form&#39;,                     {                         url: &#39;/local_pibee/0_aviso.html&#39;,                         height: 600,                         width: 600,                         innerWidth: 600,                         innerHeight: 600,                         registerActivity: true,       method: &#39;GET&#39;,                         title: &#39;Aviso legal&#39;                     });">Aviso legal</a>             </span> <img alt="" class="imgSeparador" src="/kdpo/public/images/img_trans_1x1.gif"> <span>                 <a href="#" id="kyop-footer-link-2" onclick="                  com.bbva.kyop.util.LightBoxUtil.loadLightBoxKyop(                 &#39;kyop-lightbox-container-div&#39;, &#39;kyop-lightbox-iframe-div&#39;, &#39;kyop-lightbox-form&#39;,                     {                         url: &#39;/local_pibee/5_seguridad_1.html&#39;,                         height: 600,                         width: 600,                         innerWidth: 600,                         innerHeight: 600,                         registerActivity: true,       method: &#39;GET&#39;,                         title: &#39;Seguridad&#39;                     });">Seguridad</a>             </span></div>
+                <div class="left" id="kyop-footer-info-container-last-connection"> <span class="darker">© BBVA S.A.</span> Última conexión: <span class="normalWeight">07/05/2019</span> a las <span class="normalWeight">11:31h</span> </div>
+                <div class="left kyop-logout-automatic-footer marginLeft10" style="display:none">
+                    <div class="kyop-logout-automatic-footer-img left"> <img id="kyop-automatic-footer-img-clock" asrc="/kdpo/public/clock.jpg"> </div>
+                    <div class="left">
+                        <p>&nbsp;logout: <span id="kyop-logout-automatic-footer-time" class="red" style="margin:0px"></span></p>
+                    </div>
+                    <div class="clearAll"></div>
+                </div>
+                <div class="clearAll"></div>
+            </div>
+        </div>
+
+    </div>
+
+    
+    <div class="clearAll"></div>
+   
+</body>
+</html>

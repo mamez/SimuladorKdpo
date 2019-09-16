@@ -1,0 +1,205 @@
+<style>
+.selectStyle{
+  height: 46px;
+  border: 1px rgb(235, 229, 229) solid;
+}
+</style>
+<div class="row" style="padding: 20px;">
+  <form method="POST" id="formCrear" action="">
+        <input type="hidden" class="form-control" name="pb_cod_produc" id="pb_cod_produc" value="005"/> 
+        <input type="hidden" id="pb_url" name="pb_url" class="form-control"/> 
+        <input type="hidden" class="form-control" name="action" id="action" />
+        <div class="col-lg-12">
+
+              <div class="col-lg-3"> 
+                 
+                      <div class="form-group" >
+                          <label for="menu_id" class="control-label">Opcion</label>              
+                          <select id="menu_id" name="menu_id"  class="form-control selectStyle"  onchange="onchangeSelect()" >
+                                <option></option>
+                                <% menu2.forEach((m2 ,index)=> {%>
+                                <option value="<%=m2.menu_id%>"><%=m2.nombre%></option>
+                                <% });%>               
+                          </select> 
+                          
+                      </div>
+                      <i class="fa fa-trash-o fa-lg" id="eliminarOption" style="display: none" aria-hidden="true"  onclick="ejecuta()"></i>     
+              </div>
+
+
+              <div class="col-lg-3  "> 
+                  <div class="form-group">
+                      <label for="menu_id" class="control-label">Component</label>              
+                      <select id="Component" name="Component" class="form-control selectStyle" >
+                          <option value=""></option>
+                            <option value="TLCL">TLCL</option>
+                            <option value="ENET">ENET</option>                 
+                    </select>             
+                  </div>
+              </div>
+              
+              <div class="col-lg-3"> 
+                  <div class="form-group">
+                      <label for="opcion_name">Opcion Name</label>
+                      <input type="text" class="form-control " name="opcion_name" id="opcion_name" required="required"/>
+                  </div>
+              </div>
+
+              <div class="col-lg-3">
+                  <div class="form-group">
+                      <label for="cod_serv">Cod Serv</label>             
+                      <input type="text" class="form-control" name="pb_cod_serv"  maxlength="4" id="pb_cod_serv"  pattern="[0-9]*"   title="Solo dígitos  del 0 al 9"  placeholder="Maximo 4 digitos" required="required" />
+                   </div>  
+              </div>
+        </div>
+
+        <div class="col-lg-12">
+
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label for="cod_proc">Cod Proc</label>             
+                    <input type="text" class="form-control" name="pb_cod_proc" maxlength="8" id="pb_cod_serv" id="pb_cod_proc" pattern="[0-9]*"   title="Solo dígitos  del 0 al 9"  placeholder="Maximo 8 digitos" required="required"  />
+                </div>
+            </div>
+
+            <div class="col-lg-9">
+                <div class="form-group">
+                  <label for="url">Url</label>
+		              <input type="text" class="form-control" name="url" id="url" required="required" placeholder="proceso=xxx&operacion=xxxx&accion=xxx"/>
+               </div>
+            </div>
+
+        </div>
+
+        <div class="col-lg-12">
+            <div class="col-lg-11"><button  class="btn btn-primary" onclick="Enviar()"> Cerrar  </button></div>
+            <div class="col-lg-1"><button class="btn btn-primary" onclick="Save()"> Guardar </button></div>
+            
+        </div>
+
+  </form> 
+  
+</div>
+
+<script>
+  
+  function onchangeSelect(){
+    var menu_id = document.getElementById("menu_id").value;
+    let url='http://localhost:3000/admin/menus/'+menu_id;
+    var settings = {
+      "url": url,
+      "method": "GET",
+      "timeout": 0,
+      "headers": {
+      "Content-Type": "application/json"
+       },
+   };
+
+$.ajax(settings).done(function (response) {
+    let total=response.total;
+    if(total == 0){
+      $("#eliminarOption")
+      .show()
+      .css("position","absolute")
+      .css("left","83%")
+      .css("top","47%");
+    }else{
+      $("#eliminarOption").hide();
+    }
+});
+
+  }
+  
+ function ejecuta(){
+  var menu_id = document.getElementById("menu_id").value;
+  let url='http://localhost:3000/admin/menus/'+menu_id;
+  var settings = {
+  "url": url,
+  "method": "DELETE",
+  "timeout": 0,
+  "headers": {
+  "Content-Type": "application/json"
+  }
+  };
+  
+  $.ajax(settings).done(function (response) {
+    let status=response.total;
+    if(response.status == 'OK'){
+      $("#eliminarOption")
+     window.location.href="/admin/menus";
+    }  
+  });
+
+}
+
+ function Enviar(){
+   window.location.href="/admin";
+ }
+
+ function Save(){
+   var componet=$("#Component").val();
+   var url=$("#url").val();
+   if(componet=="TLCL"){
+    $("#action").val("/SCOTLCL/cashglobal/servlet/PIBEE?"+url);
+    $("#pb_url").val("?"+url);
+   }else if(componet=="ENET"){
+    $("#action").val("/scopeco/servlet/PIBEE?"+url);    
+    $("#pb_url").val("OperacionPIBEEServlet?"+url);
+   }else{
+     alert("Seleccione un Component");
+   }
+  }
+
+</script> 
+ 
+
+      
+      
+      
+          
+           
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         
+      
+   
+               

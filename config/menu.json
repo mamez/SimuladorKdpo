@@ -1,0 +1,53 @@
+[
+    {
+        "opcion":"menu padre",
+         "funcionalidad":[
+             {   
+                 "action":"", 
+                 "opcion_name":"opcopn1",
+                 "pb_cod_produc":"005",
+                 "pb_cod_serv":"6002",
+                 "pb_cod_proc":"89990036",
+                 "pb_url":"OperacionPIBEEServlet?proceso=recaudo_nacional_pr_rs7&operacion=categorias_op&accion=continuar"
+             },{  
+                "action":"", 
+                "opcion_name":"opcopn2",
+                "pb_cod_produc":"005",
+                "pb_cod_serv":"6002",
+                "pb_cod_proc":"89990036",
+                "pb_url":"OperacionPIBEEServlet?proceso=recaudo_nacional_pr_rs7&operacion=categorias_op&accion=continuar"
+            }
+         ]
+    },
+    {
+        "opcion":"pagos",
+         "funcionalidad":[
+             {   
+                 "action":"/scopeco/servlet/PIBEE?proceso=recaudo_nacional_pr_rs7&operacion=categorias_op&accion=continuar",
+                 "opcion_name":"factura1",
+                 "pb_cod_produc":"005",
+                 "pb_cod_serv":"6002",
+                 "pb_cod_proc":"89990036",
+                 "pb_url":"OperacionPIBEEServlet?proceso=recaudo_nacional_pr_rs7&operacion=categorias_op&accion=continuar"
+             },
+             {   
+                "action":"/SCOTLCL/cashglobal/servlet/PIBEE?proceso=tlcl_fir_pendientes_pr_co_rs7&operacion=tlcl_fir_ficheros_pendientes_op_co_rs7&accion=iniciarFirmas",
+                "opcion_name":"factura2",
+                "pb_cod_produc":"005",
+                "pb_cod_serv":"8721",
+                "pb_cod_proc":"89990036",
+                "pb_url":"servlet/PIBEE?proceso=tlcl_fir_pendientes_pr_co_rs7&operacion=tlcl_fir_ficheros_pendientes_op_co_rs7&accion=iniciarFirmas"
+            }
+            ,
+            {   
+               "action":"/SCOTLCL/cashglobal/servlet/PIBEE?proceso=tlcl_com_abrirCuaderno_pr_co_rs7&operacion=tlcl_com_abrirCuaderno_op_co_rs7&accion=cargarPestannas&tipoOrden=PNS",
+               "opcion_name":"PNS",
+               "pb_cod_produc":"005",
+               "pb_cod_serv":"8607",
+               "pb_cod_proc":"89990831",
+               "pb_url":"?proceso=tlcl_com_abrirCuaderno_pr_co_rs7&operacion=tlcl_com_abrirCuaderno_op_co_rs7&accion=cargarPestannas&tipoOrden=PNS"
+           }
+            
+         ]
+    }
+]

@@ -1,0 +1,25 @@
+[
+    {
+     "name":"enet",
+     "filter":"/scopeco/*" ,
+     "server":"http://localhost:9080/enet_co_web/",
+      "static_content" :[
+         {
+           "route_local":"C:/pr/enet/online/co/web/1.6/ear/enet_co_webenet"  
+         }
+       ]
+    },
+
+    {
+        "name":"Tlcl",
+        "filter":"/SCOTLCL/cashglobal/*" ,
+        "server":" http://localhost:9081/tlcl_co_web/",
+        "static_content":[
+          {
+          "route_local":"C:/Users/VYG0069/Documents/constructorTlcl/constructor/tlcl_co_pub"  
+        }
+        ]
+        
+         
+       }
+]

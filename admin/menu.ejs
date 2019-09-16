@@ -1,0 +1,433 @@
+<!-- Tabla -  Menu -->
+<button type="button" style="margin-right: 2%" class="btn btn-primary pull-right " onclick="openModal()">Nuevo</button>
+<div class="panel-body" style="
+margin-top: 30px;">
+            <div class="panel-group" id="accordion"  >
+
+                <% var i=0;
+                 menus.forEach((m ,index)=> { i++; %>
+
+
+                    <div class="panel panel-default" style="overflow-x: auto;">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%=i%>"><%=m.opcion%></a>
+                                          </h4>
+                                    </div>
+
+                                    <div id="collapse<%=i%>" class="panel-collapse collapse">
+                                         <table class="table table-bordered table-borderless">
+                                                    <thead class="thead-info">
+                                                       <tr>
+                                                         <th>Option Name</th>
+                                                         <th>Codigo Produc</th>
+                                                         <th>Codigo Servicio</th>
+                                                         <th>Codigo Proc</th>
+                                                          <th>Acciones</th>    
+                                                       </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <% m.funcionalidad.forEach((f ,index)=> { %>     
+                                                         <tr>
+                                                          <td><%=f.opcion_name%></td>
+                                                          <td><%=f.pb_cod_produc%></td>
+                                                          <td><%=f.pb_cod_serv%></td>
+                                                          <td><%=f.pb_cod_proc%></td>
+                                                          <td style="width: 145px">
+                                                          <span value="Put"  class="btn btn-primary"  onclick="EditUserDetails('<%=f.opcion_id,%>','<%=f.menu_id,%>','<%=m.opcion%>','<%=f.action%>','<%=f.opcion_name%>','<%=f.pb_cod_produc%>','<%=f.pb_cod_serv%>','<%=f.pb_cod_proc%>','<%=f.pb_url%>')"><i class="fa fa-edit" aria-hidden="true"></i></span>
+                                                          <span value="Delete" class="btn btn-primary"   onclick="openModaldelete('<%=f.opcion_id,%>')"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+                                                          <span value="Get" class="btn btn-primary"   onclick="UpdateUserDetails('<%=m.opcion%>','<%=f.action%>','<%=f.opcion_name%>','<%=f.pb_cod_produc%>','<%=f.pb_cod_serv%>','<%=f.pb_cod_proc%>','<%=f.pb_url%>')"><i class="fa fa-eye" aria-hidden="true"></i></span>
+                                                          </td>
+                                                        </tr>
+                                                <% }); %>
+                                          </tbody> 
+                                     </table>
+                            </div>
+                 </div>
+            <% });%>
+
+
+        </div>    
+</div>
+
+  <!--ver menu lista menus-->
+
+ 
+ <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">  <b> Menus Content </b> </h4>
+      </div>
+      <!--Body-->
+      <div class="modal-body">
+            <form method="post">
+			<div class="row">
+				 <div class="col-sm-6">
+				<div class="form-group">
+				  <label for="opcion" class="control-label">Opcion</label>              
+				  <select id="opcion" name="opcion" class="form-control" disabled>
+                  <% menus.forEach((m2 ,index)=> {%>
+                  <option value ="<%=m2.opcion%>"><%=m2.opcion%></option>
+                 <% });%>    
+				  </select>             
+				</div> 
+			  </div>
+			  <div class="col-sm-12">
+				<div class="form-group">
+				  <label for="action">Action</label>
+				  <input type="text" class="form-control" name="action" id="action" required="required" disabled />
+				</div>  
+			  </div>
+			  <div class="col-sm-12">
+				<div class="form-group">
+				  <label for="opcion_name">Opcion Name</label>
+				  <input type="text" class="form-control" name="opcion_name" id="opcion_name" required="required" disabled />
+				</div>  
+			  </div>
+		   
+			  <div class="col-sm-12">
+				<div class="form-group">
+				  <label for="pb_cod_produc" >Cod_produc</label>              
+				   <input type="text" class="form-control" name="pb_cod_produc" id="pb_cod_produc" required="required" disabled />
+				</div> 
+			  </div>         
+			</div>
+			<div class="row">
+			  <div class="col-sm-12">
+				<div class="form-group">
+				  <label for="cod_serv">Cod_serv</label>              
+				   <input type="text" class="form-control" name="pb_cod_serv" id="pb_cod_serv" required="required" disabled />
+				</div> 
+			  </div>     
+			  <div class="col-sm-6">
+				<div class="form-group">
+				  <label for="cod_proc">Cod_proc</label>             
+				  <input type="text" class="form-control" name="pb_cod_proc" id="pb_cod_proc" required="required" disabled />
+				</div>  
+			  </div>
+
+			  <div class="col-sm-12">
+				<div class="form-group">
+				  <label for="url">Url</label>
+				  <input type="text" id="pb_url" name="pb_url" class="form-control" required="required" disabled />
+				</div> 
+			  </div>
+			</div>
+		  </form> 
+      </div>
+
+
+      <!--Footer-->
+    
+    </div>
+  </div>
+</div>
+
+
+  <!--editar menu-->
+
+<div class="modal fade" id="modal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel"> <b> Menus Editar </b> </h4>
+      </div>
+      <!--Body-->
+      <div class="modal-body">
+            <form method="post" action="" id="formEdit">
+			<div class="row">
+				 <div class="col-sm-6">
+				<div class="form-group">
+				  <label for="opcion" class="control-label">Opcion</label>              
+				  <select id="opcionEdi" name="menu_id" class="form-control" >
+				  </select>             
+				</div> 
+			  </div>
+			  <div class="col-sm-12">
+				<div class="form-group">
+				  <label for="Action">Action</label>
+				  <input type="text" class="form-control" name="action" id="actionEdi" required="required" />
+				</div>  
+			  </div>
+			  <div class="col-sm-12">
+				<div class="form-group">
+				  <label for="opcion_name">Opcion name</label>
+				  <input type="text" class="form-control" name="opcion_name" id="opcion_nameEdi" required="required" disabled  />
+				</div>  
+			  </div>
+		   
+			  <div class="col-sm-12">
+				<div class="form-group">
+				  <label for="pb_cod_produc" >Cod_produc</label>              
+				   <input type="text" class="form-control" name="pb_cod_produc" maxlength="3" id="pb_cod_producEdi" required="required"  />
+				</div> 
+			  </div>         
+			</div>
+			<div class="row">
+			  <div class="col-sm-12">
+				<div class="form-group">
+				  <label for="cod_serv">Cod_serv</label>              
+				   <input type="text" class="form-control" name="pb_cod_serv" maxlength="4" id="pb_cod_servEdi" required="required"  />
+				</div> 
+			  </div>     
+			  <div class="col-sm-6">
+				<div class="form-group">
+				  <label for="cod_proc">Cod_proc</label>             
+				  <input type="text" class="form-control" name="pb_cod_proc" maxlength="8" id="pb_cod_procEdi" required="required"  />
+				</div>  
+			  </div>
+
+			  <div class="col-sm-12">
+				<div class="form-group">
+				  <label for="url">Url</label>
+				  <input type="text" id="pb_urlEdi" name="pb_url" class="form-control" required="required"/>
+				</div> 
+			  </div>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Cerrar</button>
+          <button class="btn btn-primary pull-right" type="submit">Editar</button>
+      </div>
+            
+		  </form> 
+        
+
+
+
+      </div>
+      <!--Footer-->
+    
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<!-- Modal - Eliminar de menu -->
+       <div class="modal fade" id="modal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                   <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title"> <b> Eliminar Menu </b> </h4> 
+                   </div>
+                   <div class="modal-body">
+                       <form  method="post" action="" id="formDelate"  >
+                        <div class="row">
+                           <div class="col-sm-9">
+                              <div class="form-group">
+                                <label for="opcion_id">Esta seguro que desea eliminar el menu</label> 
+                              </div>
+                           </div>
+                         </div>
+                      <div class="modal-footer">
+                       <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">NO</button>
+                       <button type="submit" class="btn btn-primary pull-right" id="eliminar" onclick="#">SI</button>
+                        </div>
+                     </form>
+                   </div>
+                </div>
+             </div>
+          </div>
+
+
+
+
+<!-- Modal - Crear nueva opcion de menu -->
+       <div class="modal fade" id="modal5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                   <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title"> <b> Opcion </b> </h4>
+                   </div>
+                   <div class="modal-body">
+                       <form  method="post" action="" id="formCrear"  >
+                        <div class="row">
+                          <div class="col-sm-9">
+                              <div class="form-group">
+                               <label for="menu">Selecione una opcion  antes de continuar</label>  
+                              </div>
+                           </div>
+                           <div class="col-sm-9">
+                              <div class="form-group">
+                               <div class="radio">
+                                 <label><input type="radio" name="radio" id="existente" value="0"  >Usar Menu Existente</label>
+                               </div>
+                               <div class="radio">
+                                  <label><input type="radio" name="radio" id="nuevo"   Value="0">Crear Menu Nuevo</label>
+                                </div> 
+                              </div>
+                           </div>
+                         </div>
+                      <div class="modal-footer">
+                       <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Cancelar</button>
+                       <button type="submit" class="btn btn-primary pull-right" data-dismiss="modal" onclick="newModal()"  >Continuar</button>
+                        </div>
+                     </form>
+                   </div>
+                </div>
+             </div>
+          </div>
+
+          
+
+<!-- Modal - nuevo menu-->
+      <div class="modal fade" id="modal6" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+       <div class="modal-dialog" role="document">
+          <div class="modal-content">
+             <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"> <b> Nuevo Menu </b></h4>
+             </div>
+             <form  method="post" >
+             <div class="modal-body">
+                
+                  <div class="row">
+                     <div class="col-sm-9">
+                        <div class="form-group">
+                          <label for="nombre">Nombre Menu</label> 
+                          <input type="text"  class="form-control" name="nombre"  placeholder="nombre menu" id="nombre"  required="required"/>
+                        </div>
+                     </div>
+                   </div>
+                 
+             </div>
+             <div class="modal-footer">
+                   <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Cancelar</button>
+                 <button type="submit" class="btn btn-primary pull-right"  onclick=" #"  >Guardar</button>
+             </div>
+            </form>
+          </div>
+       </div>
+    </div>    
+
+
+<!-- Script - funcionalidad  open modal -->
+
+<script>
+jQuery.noConflict(); 
+fuction OpMod(){
+ alert("Menu Guardado");
+}    
+</script>
+
+<script>
+jQuery.noConflict(); 
+fuction OpModal(){
+ top.location.href="http://localhost:3000/admin/menus";
+}    
+</script>
+
+
+
+<!-- Script - funcionalidad aplicar metodo delete y open modal -->
+<script>
+jQuery.noConflict(); 
+function openModaldelete(id){
+$('#modal4').modal('show');
+var action="/admin/menu/"+id+"?_method=DELETE"
+    $('#formDelate').attr('action', action);
+};
+</script>
+
+
+<!-- Script - funcionalidad open modal dependiendo chekbox -->
+<script>
+
+function newModal(){
+    if(document.getElementById('existente').checked){
+     top.location.href="http://localhost:3000/admin/menus";
+      // $('#modal1').modal('show'); 
+   }
+   
+   if(document.getElementById('nuevo').checked){
+       $('#modal6').modal('show');
+   }
+}
+</script>
+
+
+<!-- Script - funcionalidad ver y editar -->
+
+<script>
+ function UpdateUserDetails(opti,act,Op,pro,ser,cod,url) {
+ $("#opcion").val(opti);
+ $("#action").val(act);
+ $("#opcion_name").val(Op);
+ $("#pb_cod_produc").val(pro);
+ $("#pb_cod_serv").val(ser);
+ $("#pb_cod_proc").val(cod);
+ $("#pb_url").val(url);
+ $('#modal2').modal('show');
+}
+</script>
+
+
+<!-- Script - funcionalidad  y open modal -->
+
+<script>
+jQuery.noConflict(); 
+function openModal(){
+$('#modal5').modal('show');
+
+};
+</script>
+
+
+
+<!-- Script - funcionalidad aplicar metodo editar put y open modal -->
+<script>
+function EditUserDetails(id,idmen,opti,act,Op,pro,ser,cod,url) {
+  var url='http://localhost:3000/admin/menus/all';
+ var settings = {
+  "url": url,
+  "method": "GET",
+  "timeout": 0,
+  "headers": {
+    "Content-Type": "application/json"
+  },
+}
+$.ajax(settings).done(function (response) {
+$("#opcionEdi").val(opti);
+ $("#actionEdi").val(act);
+ $("#opcion_nameEdi").val(Op);
+ $("#pb_cod_producEdi").val(pro);
+ $("#pb_cod_servEdi").val(ser);
+ $("#pb_cod_procEdi").val(cod);
+ $("#pb_urlEdi").val(url);
+$('#modal3').modal('show');
+var action="/admin/menu/"+id+"?_method=PUT"
+$('#formEdit').attr('action', action);
+ $('#opcionEdi').find('option').remove();
+ response.forEach(function(element) {
+   if(idmen==element.menu_id){
+       $('#opcionEdi').append('<option value="'+element.menu_id+'" selected="selected" >'+element.nombre+'</option>');
+ 
+   }else{
+       $('#opcionEdi').append('<option value="'+element.menu_id+'" >'+element.nombre+'</option>');
+   }
+ 
+});
+})
+};
+</script>
+
+
+
+
